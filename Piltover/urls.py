@@ -1,10 +1,9 @@
 from django.contrib import admin
-from django.urls import path, include
-
-from velkoz.urls import router as velkoz_router
+from django.urls import path
+from graphene_django.views import GraphQLView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('velkoz/', include(velkoz_router.urls))
+    path('velkoz/', GraphQLView.as_view(graphiql=True)),
 ]

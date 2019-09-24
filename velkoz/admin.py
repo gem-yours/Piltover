@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Champion, Skill
+from .models import ChampionModel, SkillModel
 
-admin.site.register(Champion)
-admin.site.register(Skill)
+admin.site.register(ChampionModel)
+admin.site.register(SkillModel)
