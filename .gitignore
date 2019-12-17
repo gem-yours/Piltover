@@ -221,3 +221,7 @@ fabric.properties
 
 # ignore data file
 /velkoz/datas
+/postgresql/data
+
+# ignore env file
+/velkoz/postgresql/my_env.env
