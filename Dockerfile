@@ -7,4 +7,8 @@ WORKDIR /usr/src/app
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# uwsgi configuration
+RUN pip install uwsgi
+COPY uwsgi.ini uwsgi.ini
+RUN mkdir /var/log/uwsgi/ # for logging
+RUN uwsgi --ini uwsgi.ini
