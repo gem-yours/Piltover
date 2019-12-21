@@ -25,7 +25,7 @@ SECRET_KEY = 'kkba%s*55%lc*-g7*ikpcp1yxs#xx4-wq52*q&!sihktplfy65'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -81,8 +81,12 @@ WSGI_APPLICATION = 'Piltover.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'velkoz',
+        'USER': 'u_gem',
+        'PASSWORD': 'img_000',
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
 
@@ -109,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'ja-jp'
+LANGUAGE_CODE = 'ja'
 
 TIME_ZONE = 'Japan'
 
