@@ -5,6 +5,7 @@ EXPOSE 8000
 WORKDIR /usr/src/app
 
 COPY requirements.txt requirements.txt
+
 RUN pip upgrade | pip install -r requirements.txt
 
 # uwsgi configuration
