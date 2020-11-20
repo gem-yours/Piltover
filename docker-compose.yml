@@ -12,9 +12,9 @@ services:
     depends_on:
       - db
     command:
-      bash -c "./wait_for_db.sh |
-      python manage.py makemigrations |
-      bash -c python manage.py migrate |
+      bash -c "./wait_for_db.sh &&
+      python manage.py makemigrations &&
+      python manage.py migrate &&
       /usr/local/bin/uwsgi --http :8000 --wsgi-file Piltover/wsgi.py"
   db:
     build:
