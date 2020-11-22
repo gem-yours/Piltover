@@ -53,7 +53,7 @@ class ChampionModel(models.Model):
     resource_regen = models.FloatField(default=0)
     resource_regen_growth = models.FloatField(default=0)
 
-    range = models.FloatField(default=0)
+    attack_range = models.FloatField(default=0)
     attack_damage = models.FloatField(default=0)
     attack_damage_growth = models.FloatField(default=0)
     attack_speed = models.FloatField(default=0)
@@ -63,7 +63,7 @@ class ChampionModel(models.Model):
     armor_growth = models.FloatField(default=0)
     magic_resist = models.FloatField(default=0)
     magic_resist_growth = models.FloatField(default=0)
-    move_speed = models.FloatField(default=0)
+    move_speed = models.IntegerField(default=0)
 
     passive = models.ForeignKey(SkillModel, related_name='passive', on_delete=models.SET_NULL, null=True)
     q = models.ForeignKey(SkillModel, related_name='q', on_delete=models.SET_NULL, null=True)
