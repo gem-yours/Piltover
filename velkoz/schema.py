@@ -48,6 +48,7 @@ class SkillInput(graphene.InputObjectType):
     base_damage_growth = graphene.Int()
     ap_ratio_growth = graphene.Float()
     ad_ratio_growth = graphene.Float()
+    description = graphene.String()
 
 
 class CreateSkill(graphene.Mutation):
