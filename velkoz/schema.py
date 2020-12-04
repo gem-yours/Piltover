@@ -85,11 +85,14 @@ class ChampionInput(graphene.InputObjectType):
     magic_resist = graphene.Float()
     magic_resist_growth = graphene.Float()
     move_speed = graphene.Int()
-    passive = graphene.Field(SkillInput)
-    q = graphene.Field(SkillInput)
-    w = graphene.Field(SkillInput)
-    e = graphene.Field(SkillInput)
-    r = graphene.Field(SkillInput)
+
+    # TODO: disable SkillInputs because ddragon static data is broken
+    # pls Riot...
+    # passive = graphene.Field(SkillInput)
+    # q = graphene.Field(SkillInput)
+    # w = graphene.Field(SkillInput)
+    # e = graphene.Field(SkillInput)
+    # r = graphene.Field(SkillInput)
 
 
 class CreateChampion(graphene.Mutation):
@@ -98,8 +101,8 @@ class CreateChampion(graphene.Mutation):
 
     champion = graphene.Field(ChampionType)
 
-    def mutate(self, info, champion_input):
-        champion = ChampionModel.objects.create(**champion_input)
+    def mutate(self, info, champion_data):
+        champion = ChampionModel.objects.create(**champion_data)
         return CreateChampion(champion=champion)
 
 

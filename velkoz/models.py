@@ -65,11 +65,12 @@ class ChampionModel(models.Model):
     magic_resist_growth = models.FloatField(default=0)
     move_speed = models.IntegerField(default=0)
 
-    passive = models.ForeignKey(SkillModel, related_name='passive', on_delete=models.SET_NULL, null=True)
-    q = models.ForeignKey(SkillModel, related_name='q', on_delete=models.SET_NULL, null=True)
-    w = models.ForeignKey(SkillModel, related_name='w', on_delete=models.SET_NULL, null=True)
-    e = models.ForeignKey(SkillModel, related_name='e', on_delete=models.SET_NULL, null=True)
-    r = models.ForeignKey(SkillModel, related_name='r', on_delete=models.SET_NULL, null=True)
+    # TODO: disable SkillInputs because ddragon static data is broken
+    # passive = models.ForeignKey(SkillModel, related_name='passive', on_delete=models.SET_NULL, null=True)
+    # q = models.ForeignKey(SkillModel, related_name='q', on_delete=models.SET_NULL, null=True)
+    # w = models.ForeignKey(SkillModel, related_name='w', on_delete=models.SET_NULL, null=True)
+    # e = models.ForeignKey(SkillModel, related_name='e', on_delete=models.SET_NULL, null=True)
+    # r = models.ForeignKey(SkillModel, related_name='r', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.name
