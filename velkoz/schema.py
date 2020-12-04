@@ -68,7 +68,7 @@ class ChampionInput(graphene.InputObjectType):
     health = graphene.Float()
     health_growth = graphene.Float()
     health_regen = graphene.Float()
-    health_regen_growth = graphene.Float
+    health_regen_growth = graphene.Float()
     resource_name = graphene.String()
     resource = graphene.Float()
     resource_growth = graphene.Float()
