@@ -41,7 +41,7 @@ class Query(graphene.ObjectType):
 
 class SkillInput(graphene.InputObjectType):
     name = graphene.String()
-    patch = graphene.Float()
+    patch = graphene.String()
     base_damage = graphene.Int()
     ap_ratio = graphene.Float()
     ad_ratio = graphene.Float()
@@ -65,7 +65,7 @@ class CreateSkill(graphene.Mutation):
 class ChampionInput(graphene.InputObjectType):
     name = graphene.String()
     japanese_name = graphene.String()
-    patch = graphene.Float()
+    patch = graphene.String()
     health = graphene.Float()
     health_growth = graphene.Float()
     health_regen = graphene.Float()

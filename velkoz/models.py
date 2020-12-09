@@ -13,7 +13,7 @@ class SkillModel(models.Model):
     skill_id = models.AutoField(primary_key=True, editable=False)
     name = models.CharField(max_length=32)
 
-    patch = models.FloatField(default=0)
+    patch = models.CharField(max_length=8)
 
     base_damage = models.IntegerField(default=0)
     ad_ratio = models.FloatField(default=0)
@@ -40,7 +40,7 @@ class ChampionModel(models.Model):
     name = models.CharField(max_length=16, null=False)
     japanese_name = models.CharField(max_length=16, null=False)
 
-    patch = models.FloatField(default=0)
+    patch = models.CharField(max_length=8)
 
     health = models.FloatField(default=0)
     health_growth = models.FloatField(default=0)
