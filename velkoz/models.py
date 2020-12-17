@@ -13,7 +13,7 @@ class SkillModel(models.Model):
     skill_id = models.AutoField(primary_key=True, editable=False)
     name = models.CharField(max_length=32)
 
-    patch = models.FloatField(default=0)
+    patch = models.CharField(max_length=8)
 
     base_damage = models.IntegerField(default=0)
     ad_ratio = models.FloatField(default=0)
@@ -40,7 +40,7 @@ class ChampionModel(models.Model):
     name = models.CharField(max_length=16, null=False)
     japanese_name = models.CharField(max_length=16, null=False)
 
-    patch = models.FloatField(default=0)
+    patch = models.CharField(max_length=8)
 
     health = models.FloatField(default=0)
     health_growth = models.FloatField(default=0)
@@ -53,7 +53,7 @@ class ChampionModel(models.Model):
     resource_regen = models.FloatField(default=0)
     resource_regen_growth = models.FloatField(default=0)
 
-    range = models.FloatField(default=0)
+    attack_range = models.FloatField(default=0)
     attack_damage = models.FloatField(default=0)
     attack_damage_growth = models.FloatField(default=0)
     attack_speed = models.FloatField(default=0)
@@ -63,13 +63,14 @@ class ChampionModel(models.Model):
     armor_growth = models.FloatField(default=0)
     magic_resist = models.FloatField(default=0)
     magic_resist_growth = models.FloatField(default=0)
-    move_speed = models.FloatField(default=0)
+    move_speed = models.IntegerField(default=0)
 
-    passive = models.ForeignKey(SkillModel, related_name='passive', on_delete=models.SET_NULL, null=True)
-    q = models.ForeignKey(SkillModel, related_name='q', on_delete=models.SET_NULL, null=True)
-    w = models.ForeignKey(SkillModel, related_name='w', on_delete=models.SET_NULL, null=True)
-    e = models.ForeignKey(SkillModel, related_name='e', on_delete=models.SET_NULL, null=True)
-    r = models.ForeignKey(SkillModel, related_name='r', on_delete=models.SET_NULL, null=True)
+    # TODO: disable SkillInputs because ddragon static data is broken
+    # passive = models.ForeignKey(SkillModel, related_name='passive', on_delete=models.SET_NULL, null=True)
+    # q = models.ForeignKey(SkillModel, related_name='q', on_delete=models.SET_NULL, null=True)
+    # w = models.ForeignKey(SkillModel, related_name='w', on_delete=models.SET_NULL, null=True)
+    # e = models.ForeignKey(SkillModel, related_name='e', on_delete=models.SET_NULL, null=True)
+    # r = models.ForeignKey(SkillModel, related_name='r', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.name
