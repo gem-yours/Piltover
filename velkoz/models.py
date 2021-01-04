@@ -1,19 +1,13 @@
 from django.db import models
 
-import uuid
-
 
 class SkillModel(models.Model):
-    class Meta:
-        unique_together = ('patch', 'name')
-
-    def get_queryset(self):
+    @staticmethod
+    def get_queryset():
         skills = SkillModel.objects_all()
 
     skill_id = models.AutoField(primary_key=True, editable=False)
     name = models.CharField(max_length=32)
-
-    patch = models.CharField(max_length=8)
 
     base_damage = models.IntegerField(default=0)
     ad_ratio = models.FloatField(default=0)
@@ -29,18 +23,14 @@ class SkillModel(models.Model):
 
 
 class ChampionModel(models.Model):
-    class Meta:
-        unique_together = ('patch', 'name')
-
-    def get_queryset(self):
+    @staticmethod
+    def get_queryset():
         champions = ChampionModel.objects_all()
 
     champion_id = models.AutoField(primary_key=True, editable=False)
 
     name = models.CharField(max_length=16, null=False)
     japanese_name = models.CharField(max_length=16, null=False)
-
-    patch = models.CharField(max_length=8)
 
     health = models.FloatField(default=0)
     health_growth = models.FloatField(default=0)

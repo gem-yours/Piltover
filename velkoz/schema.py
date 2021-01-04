@@ -13,6 +13,10 @@ class SkillType(DjangoObjectType):
         model = SkillModel
 
 
+def resolve_all_champions(info):
+    return ChampionModel.objects.all()
+
+
 class Query(graphene.ObjectType):
     champion = graphene.Field(ChampionType, champion_id=graphene.Int())
     all_champions = graphene.List(ChampionType)
@@ -20,22 +24,22 @@ class Query(graphene.ObjectType):
     skill = graphene.Field(SkillType, skill_id=graphene.Int())
     all_skills = graphene.List(SkillType)
 
-    def resolve_all_champions(self, info):
-        return ChampionModel.objects.all()
-
+    @staticmethod
     def resolve_all_skills(self, info):
         return SkillModel.objects.all()
 
+    @staticmethod
     def resolve_champion(self, info, **kwargs):
-        id = kwargs.get("champion_id")
-        if id is not None:
-            return ChampionModel.objects.get(pk=id)
+        champion_id = kwargs.get("champion_id")
+        if champion_id is not None:
+            return ChampionModel.objects.get(pk=champion_id)
         return None
 
+    @staticmethod
     def resolve_skill(self, info, **kwargs):
-        id = kwargs.get("skill_id")
-        if id is not None:
-            return SkillModel.objects.get(pk=id)
+        skill_id = kwargs.get("skill_id")
+        if skill_id is not None:
+            return SkillModel.objects.get(pk=skill_id)
         return None
 
 
