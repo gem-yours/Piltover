@@ -79,7 +79,7 @@ class ChampionInput(graphene.InputObjectType):
     resource_growth = graphene.Float()
     resource_regen = graphene.Float()
     resource_regen_growth = graphene.Float()
-    attach_range = graphene.Float()
+    attack_range = graphene.Float()
     attack_damage = graphene.Float()
     attack_damage_growth = graphene.Float()
     attack_speed = graphene.Float()
