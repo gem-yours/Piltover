@@ -2,3 +2,4 @@ Django
 graphene-django >= 2.0
 psycopg2-binary
 whitenoise
+graphene-file-upload
