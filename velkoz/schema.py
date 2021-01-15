@@ -4,6 +4,7 @@ import graphene
 from .models import ChampionModel, SkillModel
 from .championschema import CreateChampion, ChampionType
 from .skillschema import CreateSkill, SkillType
+from .fileschema import UploadMutation
 
 
 class Query(graphene.ObjectType):
@@ -35,6 +36,7 @@ class Query(graphene.ObjectType):
 class Mutations(graphene.ObjectType):
     create_skill = CreateSkill.Field()
     create_champion = CreateChampion.Field()
+    upload_image = UploadMutation.Field()
 
 
 schema = graphene.Schema(query=Query, mutation=Mutations)
