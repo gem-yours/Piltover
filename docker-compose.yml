@@ -7,13 +7,14 @@ services:
     ports:
       - "127.0.0.1:8000:8000"
     volumes:
-      - ".:/usr/src/app"
+      - ".:/code"
     env_file: "./postgresql/my_env.env"
     depends_on:
       - db
     command:
-      bash -c "./wait_for_db.sh &&
-      /usr/local/bin/uwsgi --http :8000 --wsgi-file Piltover/wsgi.py"
+      bash -c "/code/wait_for_db.sh &&
+      python /code/manage.py runserver 0.0.0.0:8000"
+#      /usr/local/bin/uwsgi --http :8000 --wsgi-file /code/Piltover/wsgi.py" # use wsgi settings
   db:
     build:
       context: "./postgresql"
