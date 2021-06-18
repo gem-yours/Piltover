@@ -31,6 +31,7 @@ class ChampionModel(models.Model):
 
     name = models.CharField(max_length=16, null=False)
     japanese_name = models.CharField(max_length=16, null=False)
+    image = models.ImageField(default=None, upload_to='champion_icon')
 
     health = models.FloatField(default=0)
     health_growth = models.FloatField(default=0)
