@@ -19,6 +19,10 @@ class Query(graphene.ObjectType):
         return SkillModel.objects.all()
 
     @staticmethod
+    def resolve_all_champions(self, info):
+        return ChampionModel.objects.all()
+
+    @staticmethod
     def resolve_champion(self, info, **kwargs):
         champion_id = kwargs.get("champion_id")
         if champion_id is not None:

@@ -1,3 +1,6 @@
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
+
 from graphene_file_upload.scalars import Upload
 import graphene
 import logging
@@ -15,7 +18,8 @@ class UploadMutation(graphene.Mutation):
     # noinspection PyMethodMayBeStatic
     def mutate(self, info, file, **kwargs):
         logger = logging.getLogger('critical')
-        logger.error(type(info.context.FILES.dict()['file']))
+        icon = info.context.FILES.dict()['file']
+        default_storage.save('static/{0}'.format(icon.name), ContentFile(icon.read()))
 
         return UploadMutation(success=True)
 

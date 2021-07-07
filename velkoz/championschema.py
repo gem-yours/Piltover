@@ -1,5 +1,7 @@
-from graphene_django import DjangoObjectType
 import graphene
+from graphene_django import DjangoObjectType
+from graphene_file_upload.scalars import Upload
+
 from .models import ChampionModel
 
 
@@ -48,9 +50,12 @@ def resolve_all_champions(info):
 class CreateChampion(graphene.Mutation):
     class Arguments:
         champion_data = ChampionInput(required=True)
+        image = Upload(required=True)
 
     champion = graphene.Field(ChampionType)
 
-    def mutate(self, info, champion_data):
-        champion = ChampionModel.objects.create(**champion_data)
+    # noinspection PyMethodMayBeStatic
+    def mutate(self, info, champion_data: ChampionModel, image):
+        icon = info.context.FILES.dict()[str(image)]
+        champion = ChampionModel.objects.create(image=icon, **champion_data)
         return CreateChampion(champion=champion)
